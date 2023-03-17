@@ -14,10 +14,9 @@ WorldInfo {
     "All the sensors and actuators of the robot can be used to achieve the best performance. "
     "Records are stored on the challenge web site. "
   ]
-  title "Humanoid Sprint"
+  title "Humanoid Sprint Competition"
   window "humanoid_sprint"
   basicTimeStep 20
-  FPS 20
   contactProperties [
     ContactProperties {
       material1 "NAO foot material"
@@ -32,7 +31,7 @@ WorldInfo {
 Viewpoint {
   orientation -0.19809720573301803 0.09824664160653288 0.9752461712274535 2.240601920132737
   position -3.394050354491887 -2.056443249426749 1.713569843128571
-  follow "NAO"
+  follow "participant"
 }
 TexturedBackground {
   texture "noon_cloudy_countryside"
@@ -114,6 +113,7 @@ DEF GRASS Solid {
 }
 DEF NAO Nao {
   translation -5.345 0.65 0.334
+  name "participant"
   controller "participant"
   synchronization FALSE
 }

@@ -4,10 +4,9 @@ simulationViewPerspectives: 000000ff000000010000000200000118000003ca010000000201
 sceneTreePerspectives: 000000ff00000001000000030000001c00000354000000fa0100000002010000000200
 maximizedDockId: -1
 centralWidgetVisible: 1
-userInteractions: 3dContextMenuDisabled::objectMoveDisabled::forceAndTorqueDisabled
 orthographicViewHeight: 1
 textFiles: 0 "controllers/participant/participant.py"
 robotWindow: race_stopwatch
 consoles: Console:All:All
-renderingDevicePerspectives: NAO:CameraBottom;0;0.63125;0;0
-renderingDevicePerspectives: NAO:CameraTop;0;0.63125;0;0.726232
+renderingDevicePerspectives: participant:CameraBottom;0;0.63125;0;0
+renderingDevicePerspectives: participant:CameraTop;0;0.63125;0;0.726232

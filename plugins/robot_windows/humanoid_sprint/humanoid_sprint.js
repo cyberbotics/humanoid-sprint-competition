@@ -35,7 +35,7 @@ window.robotWindow.receive = function(message, robot) {
     document.querySelector(".text").innerHTML = `
       <h2>${benchmarkName} complete</h2>
       <h3>Congratulations you finished the benchmark!</h3>
-      <p>Your current performance is: <b style="color:green;">${humanoidSprintTimeString}%</b></p>
+      <p>Your current performance is: <b style="color:green;">${humanoidSprintTimeString}</b></p>
       <p>If you want to submit your controller to the leaderboard, follow the instructions given by the "Register" button on the benchmark page.</p>
     `
     toggleModal()
