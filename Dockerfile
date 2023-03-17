@@ -8,4 +8,3 @@ COPY . /usr/local/webots-project
 # Compile the supervisor
 RUN cd /usr/local/webots-project/controllers && \
     make
-

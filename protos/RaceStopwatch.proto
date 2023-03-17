@@ -13,7 +13,7 @@ PROTO RaceStopwatch [
 Robot {
   translation IS translation
   rotation IS rotation
-  controller "race_stopwatch"
+  controller "supervisor"
   supervisor TRUE
   window IS window
   name "race_stopwatch"

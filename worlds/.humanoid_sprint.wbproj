@@ -6,7 +6,7 @@ maximizedDockId: -1
 centralWidgetVisible: 1
 userInteractions: 3dContextMenuDisabled::objectMoveDisabled::forceAndTorqueDisabled
 orthographicViewHeight: 1
-textFiles: 0 "controllers/sprinter/sprinter.py"
+textFiles: 0 "controllers/participant/participant.py"
 robotWindow: race_stopwatch
 consoles: Console:All:All
 renderingDevicePerspectives: NAO:CameraBottom;0;0.63125;0;0

@@ -114,7 +114,7 @@ DEF GRASS Solid {
 }
 DEF NAO Nao {
   translation -5.345 0.65 0.334
-  controller "sprinter"
+  controller "participant"
   synchronization FALSE
 }
 RaceStopwatch {

@@ -1,26 +1,61 @@
-"""Simple robot controller."""
+"""Sample Webots controller for the humanoid sprint benchmark."""
 
-from controller import Robot
-import sys
+from controller import Robot, Motion
 
-# Define the target motor position in radians.
-target = 1
 
-# Get pointer to the robot.
-robot = Robot()
+class Sprinter(Robot):
+    """Make the NAO robot run as fast as possible."""
 
-# Print the program output on the console
-print("Move the motors of the Thymio II to position " + str(target) + ".")
+    def initialize(self):
+        """Get device pointers, enable sensors and set robot initial pose."""
+        # This is the time step (ms) used in the motion file.
+        self.timeStep = 40
+        # Get pointers to the shoulder motors.
+        self.RShoulderPitch = self.getDevice('RShoulderPitch')
+        self.LShoulderPitch = self.getDevice('LShoulderPitch')
+        # Move the arms down.
+        self.RShoulderPitch.setPosition(1.1)
+        self.LShoulderPitch.setPosition(1.1)
 
-# Set the target position of the left and right wheels motors.
-robot.getDevice("motor.left").setPosition(target)
-robot.getDevice("motor.right").setPosition(target)
+        # # Get pointers to the 12 motors of the legs (not used).
+        # self.RHipYawPitch = self.getDevice('RHipYawPitch')  # not used in forward.motion
+        # self.LHipYawPitch = self.getDevice('LHipYawPitch')  # not used in forward.motion
+        # self.RHipRoll = self.getDevice('RHipRoll')
+        # self.LHipRoll = self.getDevice('LHipRoll')
+        # self.RHipPitch = self.getDevice('RHipPitch')
+        # self.LHipPitch = self.getDevice('LHipPitch')
+        # self.RKneePitch = self.getDevice('RKneePitch')
+        # self.LKneePitch = self.getDevice('LKneePitch')
+        # self.RAnklePitch = self.getDevice('RAnklePitch')
+        # self.LAnklePitch = self.getDevice('LAnklePitch')
+        # self.RAnkleRoll = self.getDevice('RAnkleRoll')
+        # self.LAnkleRoll = self.getDevice('LAnkleRoll')
+        # getting pointer to the 2 shoulder motors
 
-# Run the simulation for 10 seconds
-robot.step(10000)
+        # # Get pointers to the onboard cameras (not used).
+        # self.CameraTop = self.getDevice('CameraTop')
+        # self.CameraBottom = self.getDevice('CameraBottom')
+        # # Enable the cameras.
+        # self.CameraTop.enable(self.timeStep)
+        # self.CameraBottom.enable(self.timeStep)
 
-# This is the simplest controller that works for this competition
-# If you want to experiment with more complex functions, you can read the programming guide here:
-# https://www.cyberbotics.com/doc/guide/controller-programming?tab-language=python
-# or the Robot() documentation here:
-# https://cyberbotics.com/doc/reference/robot?tab-language=python
+    def run(self):
+        """Play the forward motion and loop on the walking cycle."""
+        walk = Motion('forward.motion')
+        walk.setLoop(True)
+        walk.play()
+        while True:
+            # # This motor is not controlled by forward.motion.
+            # self.RHipYawPitch.setPosition(-1)
+            # print walk.getTime()  # display the current time of the forward.motion
+            if walk.getTime() == 1360:  # we reached the end of forward.motion
+                # loop back to the beginning of the walking sequence
+                walk.setTime(360)
+            # Perform a simulation step, quit if the simulation is over.
+            if self.step(self.timeStep) == -1:
+                break
+
+
+controller = Sprinter()
+controller.initialize()
+controller.run()

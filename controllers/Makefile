@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TARGETS=race_stopwatch.Makefile
+TARGETS=supervisor.Makefile
 
 .PHONY: release debug profile clean
 
